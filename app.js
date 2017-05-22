@@ -35,23 +35,26 @@ function Image (name, type) {
 
 function populateImages () {
   for (var i = 0; i < imageArray.length - 2; i++) {
-    imageObjects.push(new Image(imageArray[i]), 'jpg');
+    imageObjects.push(new Image(imageArray[i], 'jpg'));
   }
   imageObjects.push(new Image('usb', 'gif'));
   imageObjects.push(new Image('sweep', 'png'));
 }
 
 function randImage () {
+  console.log('working');
   while (true) {
-    var randNum = Math.floor(Math.random * imageArray.length);
-    if (!usedImages.includes(imageObjects[randNum])) {
+    var randNum = Math.floor(Math.random() * imageArray.length);
+    console.log(randNum);
+    if (usedImages.includes(imageObjects[randNum]) === false) {
+      console.log(imageObjects[randNum]);
       return imageObjects[randNum];
     }
   }
 }
 
 function newImage () {
-  var allPics = document.getElementsByClassName('className');
+  var allPics = document.getElementsByClassName('randPic');
   var newUsed = [];
   for (var i = 0; i < allPics.length; i++) {
     var tempImage = randImage();
@@ -74,12 +77,14 @@ function imageClick () {
 }
 
 function addHandler() {
-  var allPics = document.getElementsByClassName('className');
+  var allPics = document.getElementsByClassName('randPic');
   for (var i = 0; i < allPics.length; i++) {
-    allPics[i].addEventHandler('click', imageClick);
+    console.log(allPics[i]);
+    allPics[i].addEventListener('click', imageClick);
   }
 }
 
 console.log(totalCounter);
 populateImages();
+randImage();
 addHandler();
