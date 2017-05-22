@@ -47,6 +47,8 @@ function randImage () {
     var randNum = Math.floor(Math.random() * imageArray.length);
     //console.log(randNum);
     if (usedImages.includes(imageObjects[randNum]) === false) {
+      //console.log(usedImages);
+      //console.log(imageObjects[randNum]);
       //console.log(imageObjects[randNum]);
       return imageObjects[randNum];
     }
@@ -61,16 +63,21 @@ function newImage () {
     tempImage.views += 1;
     allPics[i].setAttribute('src', tempImage.path);
     newUsed.push(tempImage);
+    usedImages.push(tempImage);
+    //console.log(tempImage);
   }
+  console.log(newUsed);
   usedImages = newUsed;
+  console.log(usedImages);
 }
+
 
 function imageClick () {
   for (var i = 0; i < usedImages.length; i++) {
     if (this.getAttribute('src') === usedImages[i].path) {
       usedImages[i].clicks += 1;
-      console.log('Number of clicks: ', usedImages[i].clicks);
-      console.log('total: ', totalCounter);
+      //console.log('Number of clicks: ', usedImages[i].clicks);
+      //console.log('total: ', totalCounter);
       totalCounter += 1;
       newImage();
     }
@@ -88,4 +95,5 @@ function addHandler() {
 
 populateImages();
 newImage();
+console.log(usedImages);
 addHandler();
