@@ -70,7 +70,7 @@ function imageClick () {
     if (this.getAttribute('src') === usedImages[i].path) {
       usedImages[i].clicks += 1;
       console.log('Number of clicks: ', usedImages[i].clicks);
-      console.log('total'totalCounter);
+      console.log('total: ', totalCounter);
       totalCounter += 1;
       newImage();
     }
