@@ -65,13 +65,25 @@ function imageClick () {
   console.log(totalCounter);
 }
 
+function postResults () {
+  var listArray = [];
+  var masterList = document.getElementById('results');
+  for (var i = 0; i < imageObjects.length; i++) {
+    listArray.push(`<li>Number of clicks for ${imageObjects[i].name}: ${imageObjects[i].clicks}</li>`);
+  }
+  masterList.innerHTML = listArray.join('');
+}
+
+
+
 function endSurvey () {
   if (totalCounter >= 25) {
     var allPics = document.getElementsByClassName('randPic');
     for (var i = 0; i < allPics.length; i++) {
       //console.log(allPics[i]);
-      allPics[i].addEventListener('click', imageClick);
+      allPics[i].removeEventListener('click', imageClick);
     }
+    postResults();
   }
 }
 
