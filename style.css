@@ -1,0 +1,78 @@
+header {
+  width: 1300px;
+  height: 100px;
+  position: fixed;
+  top: 0;
+  background: yellow;
+}
+
+header>div {
+  height: 100px;
+  width: 960px;
+  margin: 0px;
+  padding: 0px;
+  margin: auto;
+}
+
+header>div>* {
+  float: left;
+}
+
+header>div>:nth-child(2) {
+  width: 760px;
+}
+
+
+header img {
+  height: 75px;
+  width: 100px;
+  background: yellow;
+  margin-top: 10px;
+}
+
+header ul {
+  display: block;
+  width: 600px;
+  margin-left: 80px;
+}
+
+header h1 {
+  display: block;
+  font-size: 30px;
+  width: 600px;
+  height: 30px;
+  margin: 0px;
+  padding: 0px;
+  margin-top: 5px;
+  margin-left: 80px;
+  text-align: center;
+  font-family: fantasy;
+}
+
+
+header ul * {
+  display: inline-block;
+  float: left;
+  height: 40px;
+  width: 147.5px;
+  font-size: 20px;
+  text-align: center;
+  padding-top: 15px;
+  margin-top: 10px;
+  font-family: fantasy;
+  border-left: 2px solid black;
+  cursor: pointer;
+}
+
+
+header ul>:last-child {
+  border-right: 2px solid black;
+}
+
+li:hover {
+  background: black;
+  color: yellow;
+}
+
+header>div>:last-child {
+}
