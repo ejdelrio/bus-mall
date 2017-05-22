@@ -42,12 +42,12 @@ function populateImages () {
 }
 
 function randImage () {
-  console.log('working');
+  //console.log('working');
   while (true) {
     var randNum = Math.floor(Math.random() * imageArray.length);
-    console.log(randNum);
+    //console.log(randNum);
     if (usedImages.includes(imageObjects[randNum]) === false) {
-      console.log(imageObjects[randNum]);
+      //console.log(imageObjects[randNum]);
       return imageObjects[randNum];
     }
   }
@@ -70,6 +70,7 @@ function imageClick () {
     if (this.getAttribute('src') === usedImages[i].path) {
       usedImages[i].clicks += 1;
       console.log('Number of clicks: ', usedImages[i].clicks);
+      console.log('total'totalCounter);
       totalCounter += 1;
       newImage();
     }
@@ -79,12 +80,12 @@ function imageClick () {
 function addHandler() {
   var allPics = document.getElementsByClassName('randPic');
   for (var i = 0; i < allPics.length; i++) {
-    console.log(allPics[i]);
+    //console.log(allPics[i]);
     allPics[i].addEventListener('click', imageClick);
   }
 }
 
-console.log(totalCounter);
+
 populateImages();
-randImage();
+newImage();
 addHandler();
