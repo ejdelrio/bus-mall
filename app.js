@@ -24,6 +24,7 @@ var imageArray = [
 ];
 var imageObjects = [];
 var usedImages = [];
+var totalCounter = 0;
 
 function Image (name, type) {
   this.name = name;
@@ -64,7 +65,9 @@ function newImage () {
 function imageClick () {
   for (var i = 0; i < usedImages.length; i++) {
     if (this.getAttribute('src') === usedImages[i].path) {
-      usedImages.clicks += 1;
+      usedImages[i].clicks += 1;
+      console.log('Number of clicks: ', usedImages[i].clicks);
+      totalCounter += 1;
       newImage();
     }
   }
@@ -77,5 +80,6 @@ function addHandler() {
   }
 }
 
+console.log(totalCounter);
 populateImages();
 addHandler();
