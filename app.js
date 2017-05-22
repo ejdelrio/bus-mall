@@ -1,27 +1,6 @@
 'use strict';
 
-var imageArray = [
-  'bag',
-  'banana',
-  'bathroom',
-  'boots',
-  'breakfast',
-  'bubblegum',
-  'chair',
-  'cthulhu',
-  'dog-duck',
-  'dragon',
-  'pen',
-  'pet-sweep',
-  'scissors',
-  'shark',
-  'tauntaun',
-  'unicorn',
-  'water-can',
-  'wine-glass',
-  'sweep',
-  'usb'
-];
+var imageArray = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'tauntaun', 'unicorn', 'water-can', 'wine-glass', 'sweep', 'usb'];
 var imageObjects = [];
 var usedImages = [];
 var totalCounter = 0;
@@ -66,9 +45,9 @@ function newImage () {
     usedImages.push(tempImage);
     //console.log(tempImage);
   }
-  console.log(newUsed);
+  //console.log(newUsed);
   usedImages = newUsed;
-  console.log(usedImages);
+  //console.log(usedImages);
 }
 
 
@@ -82,6 +61,18 @@ function imageClick () {
       newImage();
     }
   }
+  endSurvey();
+  console.log(totalCounter);
+}
+
+function endSurvey () {
+  if (totalCounter >= 25) {
+    var allPics = document.getElementsByClassName('randPic');
+    for (var i = 0; i < allPics.length; i++) {
+      //console.log(allPics[i]);
+      allPics[i].addEventListener('click', imageClick);
+    }
+  }
 }
 
 function addHandler() {
@@ -93,7 +84,9 @@ function addHandler() {
 }
 
 
+
+
 populateImages();
 newImage();
-console.log(usedImages);
+//console.log(usedImages);
 addHandler();
