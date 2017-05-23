@@ -143,4 +143,5 @@ function colorArray() {
   for (var i = 0; i < imageObjects.length; i++) {
     colorArray.push(randomColor());
   }
+  return colorArray;
 }
