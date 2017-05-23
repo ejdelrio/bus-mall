@@ -101,7 +101,7 @@ function endSurvey() {
       //console.log(allPics[i]);
       allPics[i].removeEventListener('click', imageClick);
     }
-    postResults();
+    //postResults();
   }
 }
 
@@ -119,13 +119,15 @@ newImage();
 addHandler();
 updateHTMLTotal();
 
-function clickArray () {
-  var totalClickArray = [];
+function totalArray (propertyName) {
+  //returns array of total property value for all images
+  var total = [];
   for (var i = 0; i < imageObjects.length; i++) {
-    clickArray.push(imageObjects[i].clicks);
+    total.push(imageObjects[i][propertyName]);
   }
-  return totalClickArray;
+  return total;
 }
+
 
 function randomColor() {
   var newColor = [];
