@@ -147,3 +147,24 @@ function colorArray() {
   }
   return colorArray;
 }
+
+var ctx = document.getElementById('canvas');
+
+var firstChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: imageArray,
+    datasets: [{
+      label: 'Total number of clicks.',
+      data: totalArray(),
+      backgroundColor: colorArray(),
+      borderColor: colorArray(),
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+
+    }
+  }
+});
