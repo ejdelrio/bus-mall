@@ -3,11 +3,13 @@ li {
 }
 
 header {
-  width: 1300px;
+  width: 100%;
   height: 120px;
   position: fixed;
   top: 0;
+  left: 0;
   background: yellow;
+  outline: 2px solid black;
 }
 
 header>div {
@@ -78,29 +80,52 @@ header li:hover {
   color: yellow;
 }
 
-header>div>:last-child {
-}
 
-main div {
+main>div {
   width: 960px;
-  height: 1500px;
+  height: 1400px;
+  background: black;
   margin: auto;
-  background: pink;
-  margin-top: 120px;
-
+  margin-top: 150px;
 }
 
-main div ul {
-  margin-left: 100px;
-  margin-top: 100px;
+main>div> * {
+  margin: 0px;
+  padding: 0px;
 }
 
-#pics li {
-
-  display: inline-block;
+main>div div {
+  width: 900px;
+  float: left;
+  margin-left: 30px;
 }
 
-.randPic {
+main>div>:last-child {
+  height: 600px;
+  color: yellow;
+}
+
+h3 {
+  font-size: 25px;
+}
+
+#pics {
   height: 200px;
+  width: 900px;
+  padding: 0;
+  outline: 3px solid yellow;
+}
+
+#pics> li {
+  display: inline-block;
+  margin-left: 70px;
+}
+
+#pics img {
   width: 200px;
+  height: 200px;
+}
+
+#results li {
+  font-size: 25px;
 }

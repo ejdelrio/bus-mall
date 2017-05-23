@@ -26,8 +26,6 @@ function randImage () {
     var randNum = Math.floor(Math.random() * imageArray.length);
     //console.log(randNum);
     if (usedImages.includes(imageObjects[randNum]) === false) {
-      //console.log(usedImages);
-      //console.log(imageObjects[randNum]);
       //console.log(imageObjects[randNum]);
       return imageObjects[randNum];
     }
@@ -50,6 +48,9 @@ function newImage () {
   //console.log(usedImages);
 }
 
+function updateHTMLTotal() {
+  document.getElementsByTagName('h3')[0].innerHTML = `Total number of clicks: ${totalCounter}`;
+}
 
 function imageClick () {
   for (var i = 0; i < usedImages.length; i++) {
@@ -62,7 +63,8 @@ function imageClick () {
     }
   }
   endSurvey();
-  console.log(totalCounter);
+  updateHTMLTotal();
+  //console.log(totalCounter);
 }
 
 function postResults () {
@@ -73,8 +75,6 @@ function postResults () {
   }
   masterList.innerHTML = listArray.join('');
 }
-
-
 
 function endSurvey () {
   if (totalCounter >= 25) {
@@ -95,10 +95,7 @@ function addHandler() {
   }
 }
 
-
-
-
 populateImages();
 newImage();
-//console.log(usedImages);
 addHandler();
+updateHTMLTotal();
