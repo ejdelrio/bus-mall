@@ -101,6 +101,7 @@ function endSurvey() {
       //console.log(allPics[i]);
       allPics[i].removeEventListener('click', imageClick);
     }
+    genChart();
     //postResults();
   }
 }
@@ -148,23 +149,29 @@ function colorArray() {
   return colorArray;
 }
 
-var ctx = document.getElementById('canvas');
 
-var firstChart = new Chart(ctx, {
-  type: 'bar',
-  data: {
-    labels: imageArray,
-    datasets: [{
-      label: 'Total number of clicks.',
-      data: totalArray(),
-      backgroundColor: colorArray(),
-      borderColor: colorArray(),
-      borderWidth: 1
-    }]
-  },
-  options: {
-    scales: {
-
+function genChart() {
+  var ctx = document.getElementById('canvas');
+  ctx.style.visibility = 'visible';
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: imageArray,
+      datasets: [{
+        label: 'Total number of clicks.',
+        data: totalArray('clicks'),
+        backgroundColor: 'black',
+        borderWidth: 1
+      },{
+        label: 'Total number of views.',
+        data: totalArray('views'),
+        backgroundColor: 'green',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+      }
     }
-  }
-});
+  });
+}

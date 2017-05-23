@@ -132,4 +132,5 @@ h3 {
 
 canvas {
   background: yellow;
+  visibility: hidden;
 }
