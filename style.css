@@ -79,8 +79,6 @@ header li:hover {
   color: yellow;
 }
 
-header>div>:last-child {
-}
 
 main>div {
   width: 960px;
@@ -93,7 +91,7 @@ main>div {
 main>div>:first-child {
   width: 960px;
   height: 210px;
-  margin-top: 30px;
+  margin-top: 150px;
 }
 
 #pics {
