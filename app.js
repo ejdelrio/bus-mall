@@ -39,7 +39,7 @@ function randImage() {
 }
 
 function newImage() {
-  //Retrieves all image elements in for survey
+  //Retrieves all image elements from survey
   var allPics = document.getElementsByClassName('randPic');
   //Stores 3 new Objects.
   var newUsed = [];
