@@ -5,25 +5,26 @@ var imageObjects = [];//Will house contructed objects
 var usedImages = [];//Will house previous guesses
 var totalCounter = 0;//Counts total number of clicks
 
-function Image (name, type) {
+function Image(name, type) {
   //Constructs image with name, file path and number of clicks/views
   this.name = name;
   this.path = `./img/${name}.${type}`;
   this.views = 0;
   this.clicks = 0;
+  imageObjects.push(this);
 }
 
-function populateImages () {
+function populateImages() {
   //Iterates throug imageArray and runs names through constructor.
   for (var i = 0; i < imageArray.length - 2; i++) {
-    imageObjects.push(new Image(imageArray[i], 'jpg'));
+    new Image(imageArray[i], 'jpg');
   }
   //Constructs the two non-jpg objects
-  imageObjects.push(new Image('usb', 'gif'));
-  imageObjects.push(new Image('sweep', 'png'));
+  new Image('usb', 'gif');
+  new Image('sweep', 'png');
 }
 
-function randImage () {
+function randImage() {
   //Generates a random image from imageObjects array
   //console.log('working');
   while (true) { //Intentional infinite loop to keep generating random numbers until a proper choice is made.
@@ -37,7 +38,7 @@ function randImage () {
   }
 }
 
-function newImage () {
+function newImage() {
   //Retrieves all image elements in for survey
   var allPics = document.getElementsByClassName('randPic');
   //Stores 3 new Objects.
@@ -63,7 +64,7 @@ function updateHTMLTotal() {
   document.getElementsByTagName('h3')[0].innerHTML = `Total number of clicks: ${totalCounter}`;
 }
 
-function imageClick () {
+function imageClick() {
   //Iterates through old values
   //If source of clicked image is the same as the objects path, it's clicked counter increases by one.
   for (var i = 0; i < usedImages.length; i++) {
@@ -90,7 +91,7 @@ function postResults () {
   masterList.innerHTML = listArray.join('');
 }
 
-function endSurvey () {
+function endSurvey() {
   //Checks to see if totCounter is greater than 25
   //If so, the event handler is removed from images to prevent clicking
   //postResults is called to display results on HTML
