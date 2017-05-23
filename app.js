@@ -26,8 +26,6 @@ function randImage () {
     var randNum = Math.floor(Math.random() * imageArray.length);
     //console.log(randNum);
     if (usedImages.includes(imageObjects[randNum]) === false) {
-      //console.log(usedImages);
-      //console.log(imageObjects[randNum]);
       //console.log(imageObjects[randNum]);
       return imageObjects[randNum];
     }
@@ -49,7 +47,6 @@ function newImage () {
   usedImages = newUsed;
   //console.log(usedImages);
 }
-
 
 function imageClick () {
   for (var i = 0; i < usedImages.length; i++) {
@@ -74,8 +71,6 @@ function postResults () {
   masterList.innerHTML = listArray.join('');
 }
 
-
-
 function endSurvey () {
   if (totalCounter >= 25) {
     var allPics = document.getElementsByClassName('randPic');
@@ -95,10 +90,6 @@ function addHandler() {
   }
 }
 
-
-
-
 populateImages();
 newImage();
-//console.log(usedImages);
 addHandler();
