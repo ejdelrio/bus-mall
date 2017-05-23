@@ -48,6 +48,10 @@ function newImage () {
   //console.log(usedImages);
 }
 
+function updateHTMLTotal() {
+  document.getElementsByTagName('h3')[0].innerHTML = `Total number of clicks: ${totalCounter}`;
+}
+
 function imageClick () {
   for (var i = 0; i < usedImages.length; i++) {
     if (this.getAttribute('src') === usedImages[i].path) {
@@ -59,7 +63,8 @@ function imageClick () {
     }
   }
   endSurvey();
-  console.log(totalCounter);
+  updateHTMLTotal();
+  //console.log(totalCounter);
 }
 
 function postResults () {
@@ -93,3 +98,4 @@ function addHandler() {
 populateImages();
 newImage();
 addHandler();
+updateHTMLTotal();

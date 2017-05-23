@@ -105,6 +105,9 @@ main>div>:last-child {
   color: yellow;
 }
 
+h3 {
+  font-size: 25px;
+}
 
 #pics {
   height: 200px;
@@ -121,4 +124,8 @@ main>div>:last-child {
 #pics img {
   width: 200px;
   height: 200px;
+}
+
+#results li {
+  font-size: 25px;
 }
