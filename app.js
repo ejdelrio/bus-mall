@@ -155,14 +155,14 @@ function totalArray (propertyName) {
 }
 
 
-<<<<<<< HEAD
+
 function colorArray() {
   var colorArray = [];
   for (var i = 0; i < imageObjects.length; i++) {
     colorArray.push(randomColor());
   }
   return colorArray;
-=======
+
 // function randomColor() {
 //   var newColor = [];
 //   for (var i = 0; i < 6; i++) {
@@ -209,5 +209,5 @@ function genChart() {
       }
     }
   });
->>>>>>> 64b4f89701f6a5db5b061c475e7a16b7a2b0c786
+
 }
