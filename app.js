@@ -154,7 +154,7 @@ function genChart() {
   var ctx = document.getElementById('canvas');
   ctx.style.visibility = 'visible';
   new Chart(ctx, {
-    type: 'bar',
+    type: 'line',
     data: {
       labels: imageArray,
       datasets: [{
