@@ -14,6 +14,14 @@ function Image(name, type) {
   imageObjects.push(this);
 }
 
+function packageSession() {
+  localStorage.oldObjects = JSON.stringify(imageObjects);
+}
+
+function unpackSession() {
+  imageObjects = JSON.parse(localStorage.oldObjects);
+}
+
 function populateImages() {
   //Iterates throug imageArray and runs names through constructor.
   for (var i = 0; i < imageArray.length - 2; i++) {
@@ -22,6 +30,10 @@ function populateImages() {
   //Constructs the two non-jpg objects
   new Image('usb', 'gif');
   new Image('sweep', 'png');
+}
+
+if (localStorage.oldObjects) {
+  unpackSession();
 }
 
 function randImage() {
@@ -104,6 +116,7 @@ function endSurvey() {
     genChart();
     //postResults();
   }
+  packageSession();
 }
 
 function addHandler() {
