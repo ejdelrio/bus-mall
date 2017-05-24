@@ -138,6 +138,7 @@ function randomColor() {
   return `#${newColor.join('')}`;
 }
 
+
 function colorArray() {
   var colorArray = [];
   for (var i = 0; i < imageObjects.length; i++) {
