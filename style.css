@@ -1,3 +1,7 @@
+body {
+  background: black;
+}
+
 li {
   list-style: none;
 }
@@ -80,13 +84,17 @@ header li:hover {
   color: yellow;
 }
 
+main {
+  background: black;
+}
 
 main>div {
   width: 960px;
   height: 1400px;
   background: black;
   margin: auto;
-  margin-top: 150px;
+  margin-top: 130px;
+  outline: 2px solid yellow;
 }
 
 main>div> * {
@@ -128,4 +136,9 @@ h3 {
 
 #results li {
   font-size: 25px;
+}
+
+canvas {
+  background: yellow;
+  visibility: hidden;
 }
