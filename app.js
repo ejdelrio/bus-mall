@@ -1,4 +1,3 @@
-
 'use strict';
 //Initial array containing image names used to construct objects
 var imageArray = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'tauntaun', 'unicorn', 'water-can', 'wine-glass', 'sweep', 'usb'];
@@ -131,24 +130,25 @@ function totalArray (propertyName) {
 }
 
 
-function randomColor() {
-  var newColor = [];
-  for (var i = 0; i < 6; i++) {
-    var letterOrNumber = Math.floor(Math.random() * 2);
-    var randChar = String.fromCharCode(Math.floor(Math.random() * 6 + 97));
-    var randNum = Math.floor(Math.random() * 9);
-    newColor.push([randChar, randNum][letterOrNumber]);
-  }
-  return `#${newColor.join('')}`;
-}
+// function randomColor() {
+//   var newColor = [];
+//   for (var i = 0; i < 6; i++) {
+//     var letterOrNumber = Math.floor(Math.random() * 2);
+//     var randChar = String.fromCharCode(Math.floor(Math.random() * 6 + 97));
+//     var randNum = Math.floor(Math.random() * 9);
+//     newColor.push([randChar, randNum][letterOrNumber]);
+//   }
+//   return `#${newColor.join('')}`;
+// }
 
-function colorArray() {
-  var colorArray = [];
-  for (var i = 0; i < imageObjects.length; i++) {
-    colorArray.push(randomColor());
-  }
-  return colorArray;
-}
+// function colorArray() {
+//   var colorArray = [];
+//   for (var i = 0; i < imageObjects.length; i++) {
+//     colorArray.push(randomColor());
+//   }
+//   return colorArray;
+// }
+
 
 
 function genChart() {
