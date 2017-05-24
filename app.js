@@ -32,10 +32,6 @@ function populateImages() {
   new Image('sweep', 'png');
 }
 
-if (localStorage.oldObjects) {
-  unpackSession();
-}
-
 function randImage() {
   //Generates a random image from imageObjects array
   //console.log('working');
@@ -114,9 +110,10 @@ function endSurvey() {
       allPics[i].removeEventListener('click', imageClick);
     }
     genChart();
+    packageSession();
     //postResults();
   }
-  packageSession();
+
 }
 
 function addHandler() {
@@ -129,6 +126,9 @@ function addHandler() {
 }
 
 populateImages();
+if (localStorage.oldObjects) {
+  unpackSession();
+}
 newImage();
 addHandler();
 updateHTMLTotal();
