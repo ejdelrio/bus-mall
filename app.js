@@ -4,6 +4,7 @@ var imageArray = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum'
 var imageObjects = [];//Will house contructed objects
 var usedImages = [];//Will house previous guesses
 var totalCounter = 0;//Counts total number of clicks
+var jankyReplica = [];
 
 function Image(name, type) {
   //Constructs image with name, file path and number of clicks/views
@@ -12,6 +13,7 @@ function Image(name, type) {
   this.views = 0;
   this.clicks = 0;
   imageObjects.push(this);
+  imageObjects.push(jankyReplica);
 }
 
 function populateImages() {
@@ -101,7 +103,8 @@ function endSurvey() {
       //console.log(allPics[i]);
       allPics[i].removeEventListener('click', imageClick);
     }
-    postResults();
+    genChart();
+    //postResults();
   }
 }
 
@@ -119,30 +122,92 @@ newImage();
 addHandler();
 updateHTMLTotal();
 
-function clickArray () {
-  var totalClickArray = [];
-  for (var i = 0; i < imageObjects.length; i++) {
-    clickArray.push(imageObjects[i].clicks);
+function superJankyObjectSorter(objectArray) {
+  //I'm not proud of this function. Please don't judge me :(
+  //Sorts objects in array by click value
+  var condition = objectArray.length;
+  var newList = [];
+  while (newList.length != condition) {
+    for (var i = 0; i < objectArray.length ; i++) {
+      for (var n = 0; n < objectArray.length; n++) {
+        if (objectArray[i].clicks < objectArray[n].clicks) {
+          break;
+        } else if (n === objectArray.length - 1 && objectArray.length != 0  && objectArray[i].clicks >= objectArray[n].clicks) {
+          newList.push(objectArray[i]);
+          objectArray.splice(i, 1);
+          i = 0;
+        }
+      }
+    }
   }
-  return totalClickArray;
+  return newList;
 }
 
-function randomColor() {
-  var newColor = [];
-  for (var i = 0; i < 6; i++) {
-    var letterOrNumber = Math.floor(Math.random() * 2);
-    var randChar = String.fromCharCode(Math.floor(Math.random() * 6 + 97));
-    var randNum = Math.floor(Math.random() * 9);
-    newColor.push([randChar, randNum][letterOrNumber]);
+jankyReplica = superJankyObjectSorter(jankyReplica).slice(0,5);
+
+function totalArray (propertyName) {
+  //returns array of total property value for all images
+  var total = [];
+  for (var i = 0; i < jankyReplica.length; i++) {
+    total.push(jankyReplica[i][propertyName]);
   }
-  return `#${newColor.join('')}`;
+  return total;
 }
 
 
+<<<<<<< HEAD
 function colorArray() {
   var colorArray = [];
   for (var i = 0; i < imageObjects.length; i++) {
     colorArray.push(randomColor());
   }
   return colorArray;
+=======
+// function randomColor() {
+//   var newColor = [];
+//   for (var i = 0; i < 6; i++) {
+//     var letterOrNumber = Math.floor(Math.random() * 2);
+//     var randChar = String.fromCharCode(Math.floor(Math.random() * 6 + 97));
+//     var randNum = Math.floor(Math.random() * 9);
+//     newColor.push([randChar, randNum][letterOrNumber]);
+//   }
+//   return `#${newColor.join('')}`;
+// }
+
+// function colorArray() {
+//   var colorArray = [];
+//   for (var i = 0; i < imageObjects.length; i++) {
+//     colorArray.push(randomColor());
+//   }
+//   return colorArray;
+// }
+
+
+
+
+function genChart() {
+  var ctx = document.getElementById('canvas');
+  ctx.style.visibility = 'visible';
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: imageArray,
+      datasets: [{
+        label: 'Total number of clicks.',
+        data: totalArray('clicks'),
+        backgroundColor: 'black',
+        borderWidth: 1
+      },{
+        label: 'Total number of views.',
+        data: totalArray('views'),
+        backgroundColor: 'green',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+      }
+    }
+  });
+>>>>>>> 64b4f89701f6a5db5b061c475e7a16b7a2b0c786
 }
