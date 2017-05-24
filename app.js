@@ -81,15 +81,15 @@ function imageClick() {
   //console.log(totalCounter);
 }
 
-function postResults () {
-  //Iterates through clicked values of objects and appends them to HTML ul element
-  var listArray = [];
-  var masterList = document.getElementById('results');
-  for (var i = 0; i < imageObjects.length; i++) {
-    listArray.push(`<li>Number of clicks for ${imageObjects[i].name}: ${imageObjects[i].clicks}</li>`);
-  }
-  masterList.innerHTML = listArray.join('');
-}
+// function postResults () {
+//   //Iterates through clicked values of objects and appends them to HTML ul element
+//   var listArray = [];
+//   var masterList = document.getElementById('results');
+//   for (var i = 0; i < imageObjects.length; i++) {
+//     listArray.push(`<li>Number of clicks for ${imageObjects[i].name}: ${imageObjects[i].clicks}</li>`);
+//   }
+//   masterList.innerHTML = listArray.join('');
+// }
 
 function endSurvey() {
   //Checks to see if totCounter is greater than 25
@@ -130,24 +130,24 @@ function totalArray (propertyName) {
 }
 
 
-// function randomColor() {
-//   var newColor = [];
-//   for (var i = 0; i < 6; i++) {
-//     var letterOrNumber = Math.floor(Math.random() * 2);
-//     var randChar = String.fromCharCode(Math.floor(Math.random() * 6 + 97));
-//     var randNum = Math.floor(Math.random() * 9);
-//     newColor.push([randChar, randNum][letterOrNumber]);
-//   }
-//   return `#${newColor.join('')}`;
-// }
+function randomColor() {
+  var newColor = [];
+  for (var i = 0; i < 6; i++) {
+    var letterOrNumber = Math.floor(Math.random() * 2);
+    var randChar = String.fromCharCode(Math.floor(Math.random() * 6 + 97));
+    var randNum = Math.floor(Math.random() * 9);
+    newColor.push([randChar, randNum][letterOrNumber]);
+  }
+  return `#${newColor.join('')}`;
+}
 
-// function colorArray() {
-//   var colorArray = [];
-//   for (var i = 0; i < imageObjects.length; i++) {
-//     colorArray.push(randomColor());
-//   }
-//   return colorArray;
-// }
+function colorArray() {
+  var colorArray = [];
+  for (var i = 0; i < imageObjects.length; i++) {
+    colorArray.push(randomColor());
+  }
+  return colorArray;
+}
 
 
 
@@ -155,18 +155,18 @@ function genChart() {
   var ctx = document.getElementById('canvas');
   ctx.style.visibility = 'visible';
   new Chart(ctx, {
-    type: 'bar',
+    type: 'polarArea',
     data: {
       labels: imageArray,
       datasets: [{
         label: 'Total number of clicks.',
         data: totalArray('clicks'),
-        backgroundColor: 'black',
+        backgroundColor: colorArray(),
         borderWidth: 1
       },{
         label: 'Total number of views.',
         data: totalArray('views'),
-        backgroundColor: 'green',
+        backgroundColor: 'black',
         borderWidth: 1
       }]
     },
