@@ -16,10 +16,12 @@ function Image(name, type) {
 
 function packageSession() {
   localStorage.oldObjects = JSON.stringify(imageObjects);
+  localStorage.oldTotal = JSON.stringify(totalCounter);
 }
 
 function unpackSession() {
   imageObjects = JSON.parse(localStorage.oldObjects);
+  totalCounter = JSON.parse(localStorage.oldTotal);
 }
 
 function populateImages() {
