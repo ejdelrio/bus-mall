@@ -62,7 +62,7 @@ function newImage() {
     usedImages.push(tempImage); //Pushes tempImage to usedImages to prevent it from being drawn again
     //console.log(tempImage);
   }
-  //console.log(newUsed);
+  //console.log(newUsed)
   usedImages = newUsed; //reassigns used images to the new array of used objects
   //console.log(usedImages);
 }
@@ -109,11 +109,10 @@ function endSurvey() {
       //console.log(allPics[i]);
       allPics[i].removeEventListener('click', imageClick);
     }
-    genChart();
-    packageSession();
     //postResults();
   }
-
+  genChart();
+  packageSession();
 }
 
 function addHandler() {
