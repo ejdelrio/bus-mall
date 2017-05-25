@@ -14,6 +14,14 @@ function Image(name, type) {
   imageObjects.push(this);
 }
 
+function packageSession() {
+  localStorage.oldObjects = JSON.stringify(imageObjects);
+}
+
+function unpackSession() {
+  imageObjects = JSON.parse(localStorage.oldObjects);
+}
+
 function populateImages() {
   //Iterates throug imageArray and runs names through constructor.
   for (var i = 0; i < imageArray.length - 2; i++) {
@@ -104,6 +112,7 @@ function endSurvey() {
     //postResults();
   }
   genChart();
+  packageSession();
 }
 
 function addHandler() {
@@ -116,6 +125,9 @@ function addHandler() {
 }
 
 populateImages();
+if (localStorage.oldObjects) {
+  unpackSession();
+}
 newImage();
 addHandler();
 updateHTMLTotal();
@@ -130,24 +142,24 @@ function totalArray (propertyName) {
 }
 
 
-// function randomColor() {
-//   var newColor = [];
-//   for (var i = 0; i < 6; i++) {
-//     var letterOrNumber = Math.floor(Math.random() * 2);
-//     var randChar = String.fromCharCode(Math.floor(Math.random() * 6 + 97));
-//     var randNum = Math.floor(Math.random() * 9);
-//     newColor.push([randChar, randNum][letterOrNumber]);
-//   }
-//   return `#${newColor.join('')}`;
-// }
+function randomColor() {
+  var newColor = [];
+  for (var i = 0; i < 6; i++) {
+    var letterOrNumber = Math.floor(Math.random() * 2);
+    var randChar = String.fromCharCode(Math.floor(Math.random() * 6 + 97));
+    var randNum = Math.floor(Math.random() * 9);
+    newColor.push([randChar, randNum][letterOrNumber]);
+  }
+  return `#${newColor.join('')}`;
+}
 
-// function colorArray() {
-//   var colorArray = [];
-//   for (var i = 0; i < imageObjects.length; i++) {
-//     colorArray.push(randomColor());
-//   }
-//   return colorArray;
-// }
+function colorArray() {
+  var colorArray = [];
+  for (var i = 0; i < imageObjects.length; i++) {
+    colorArray.push(randomColor());
+  }
+  return colorArray;
+}
 
 
 
@@ -155,18 +167,18 @@ function genChart() {
   var ctx = document.getElementById('canvas');
   ctx.style.visibility = 'visible';
   new Chart(ctx, {
-    type: 'bar',
+    type: 'polarArea',
     data: {
       labels: imageArray,
       datasets: [{
         label: 'Total number of clicks.',
         data: totalArray('clicks'),
-        backgroundColor: 'black',
+        backgroundColor: colorArray(),
         borderWidth: 1
       },{
         label: 'Total number of views.',
         data: totalArray('views'),
-        backgroundColor: 'green',
+        backgroundColor: 'black',
         borderWidth: 1
       }]
     },
