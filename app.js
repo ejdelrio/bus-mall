@@ -82,15 +82,15 @@ function imageClick() {
   //console.log(totalCounter);
 }
 
-function postResults () {
-  //Iterates through clicked values of objects and appends them to HTML ul element
-  var listArray = [];
-  var masterList = document.getElementById('results');
-  for (var i = 0; i < imageObjects.length; i++) {
-    listArray.push(`<li>Number of clicks for ${imageObjects[i].name}: ${imageObjects[i].clicks}</li>`);
-  }
-  masterList.innerHTML = listArray.join('');
-}
+// function postResults () {
+//   //Iterates through clicked values of objects and appends them to HTML ul element
+//   var listArray = [];
+//   var masterList = document.getElementById('results');
+//   for (var i = 0; i < imageObjects.length; i++) {
+//     listArray.push(`<li>Number of clicks for ${imageObjects[i].name}: ${imageObjects[i].clicks}</li>`);
+//   }
+//   masterList.innerHTML = listArray.join('');
+// }
 
 function endSurvey() {
   //Checks to see if totCounter is greater than 25
@@ -102,9 +102,9 @@ function endSurvey() {
       //console.log(allPics[i]);
       allPics[i].removeEventListener('click', imageClick);
     }
-    genChart();
     //postResults();
   }
+  genChart();
 }
 
 function addHandler() {
