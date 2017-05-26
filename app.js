@@ -135,7 +135,8 @@ if (localStorage.oldObjects) {
   unpackSession();
   endSurvey();
   updateHTMLTotal();
-  genChart()
+  var chartColor = colorArray();
+  genChart();
 }
 
 function totalArray (propertyName) {
@@ -172,7 +173,7 @@ var chartColor = colorArray()
 function genChart() {
   var ctx = document.getElementById('canvas');
   ctx.style.visibility = 'visible';
-  new Chart(ctx, {
+  var myChart = new Chart(ctx, {
     type: 'polarArea',
     data: {
       labels: imageArray,

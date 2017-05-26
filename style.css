@@ -95,7 +95,13 @@ main>div {
   background: black;
   margin: auto;
   margin-top: 130px;
-  outline: 2px solid yellow;
+  border: 2px solid yellow;
+  transition: .5s all;
+}
+
+main>div:hover {
+  border: 5px solid yellow;
+  border-radius: 50px;
 }
 
 main>div> * {
@@ -127,10 +133,8 @@ h3 {
 }
 
 #pics:hover {
-  border-radius: 10px;
+  border-radius: 30px;
 }
-
-
 
 #pics> li {
   display: inline-block;
@@ -155,5 +159,5 @@ h3 {
 canvas {
   background: yellow;
   visibility: hidden;
-  border-radius: 10px;
+  border-radius: 20px;
 }
