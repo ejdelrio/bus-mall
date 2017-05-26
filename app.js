@@ -16,10 +16,12 @@ function Image(name, type) {
 
 function packageSession() {
   localStorage.oldObjects = JSON.stringify(imageObjects);
+  localStorage.oldTotal = JSON.stringify(totalCounter);
 }
 
 function unpackSession() {
   imageObjects = JSON.parse(localStorage.oldObjects);
+  totalCounter = JSON.parse(localStorage.oldTotal);
 }
 
 function populateImages() {
@@ -125,12 +127,17 @@ function addHandler() {
 }
 
 populateImages();
-if (localStorage.oldObjects) {
-  unpackSession();
-}
 newImage();
 addHandler();
 updateHTMLTotal();
+
+if (localStorage.oldObjects) {
+  unpackSession();
+  endSurvey();
+  updateHTMLTotal();
+  var chartColor = colorArray();
+  genChart();
+}
 
 function totalArray (propertyName) {
   //returns array of total property value for all images
@@ -161,19 +168,19 @@ function colorArray() {
   return colorArray;
 }
 
-
+var chartColor = colorArray()
 
 function genChart() {
   var ctx = document.getElementById('canvas');
   ctx.style.visibility = 'visible';
-  new Chart(ctx, {
+  var myChart = new Chart(ctx, {
     type: 'polarArea',
     data: {
       labels: imageArray,
       datasets: [{
         label: 'Total number of clicks.',
         data: totalArray('clicks'),
-        backgroundColor: colorArray(),
+        backgroundColor: chartColor,
         borderWidth: 1
       },{
         label: 'Total number of views.',
