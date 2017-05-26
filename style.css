@@ -43,7 +43,7 @@ header img {
 header ul {
   display: block;
   width: 600px;
-  margin-left: 80px;
+  margin-left: 50px;
 }
 
 header h1 {
@@ -54,7 +54,7 @@ header h1 {
   margin: 0px;
   padding: 0px;
   margin-top: 5px;
-  margin-left: 80px;
+  margin-left: 100px;
   text-align: center;
   font-family: fantasy;
 }
@@ -72,6 +72,7 @@ header ul * {
   font-family: fantasy;
   border-left: 2px solid black;
   cursor: pointer;
+  transition: .350s all;
 }
 
 
@@ -121,8 +122,15 @@ h3 {
   height: 200px;
   width: 900px;
   padding: 0;
-  outline: 3px solid yellow;
+  border: 1px solid yellow;
+  transition: 1s all;
 }
+
+#pics:hover {
+  border-radius: 10px;
+}
+
+
 
 #pics> li {
   display: inline-block;
@@ -132,6 +140,12 @@ h3 {
 #pics img {
   width: 200px;
   height: 200px;
+  transition: 1s all;
+}
+
+#pics img:hover {
+  transform: rotate(720deg);
+  border-radius: 100px;
 }
 
 #results li {
@@ -141,4 +155,5 @@ h3 {
 canvas {
   background: yellow;
   visibility: hidden;
+  border-radius: 10px;
 }

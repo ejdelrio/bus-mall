@@ -127,12 +127,16 @@ function addHandler() {
 }
 
 populateImages();
-if (localStorage.oldObjects) {
-  unpackSession();
-}
 newImage();
 addHandler();
 updateHTMLTotal();
+
+if (localStorage.oldObjects) {
+  unpackSession();
+  endSurvey();
+  updateHTMLTotal();
+  genChart()
+}
 
 function totalArray (propertyName) {
   //returns array of total property value for all images
@@ -163,7 +167,7 @@ function colorArray() {
   return colorArray;
 }
 
-
+var chartColor = colorArray()
 
 function genChart() {
   var ctx = document.getElementById('canvas');
@@ -175,7 +179,7 @@ function genChart() {
       datasets: [{
         label: 'Total number of clicks.',
         data: totalArray('clicks'),
-        backgroundColor: colorArray(),
+        backgroundColor: chartColor,
         borderWidth: 1
       },{
         label: 'Total number of views.',
