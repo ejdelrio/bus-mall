@@ -36,13 +36,10 @@ function populateImages() {
 
 function randImage() {
   //Generates a random image from imageObjects array
-  //console.log('working');
   while (true) { //Intentional infinite loop to keep generating random numbers until a proper choice is made.
     var randNum = Math.floor(Math.random() * imageArray.length); //Generates a random number between 0 and 19 that will be used as the index for imageObjects
-    //console.log(randNum);
     //Checks to see if random Object is in list of previous guesses.
     if (usedImages.includes(imageObjects[randNum]) === false) {
-      //console.log(imageObjects[randNum]);
       return imageObjects[randNum];
     }
   }
@@ -62,11 +59,10 @@ function newImage() {
     allPics[i].setAttribute('src', tempImage.path);
     newUsed.push(tempImage);
     usedImages.push(tempImage); //Pushes tempImage to usedImages to prevent it from being drawn again
-    //console.log(tempImage);
   }
-  //console.log(newUsed)
+
   usedImages = newUsed; //reassigns used images to the new array of used objects
-  //console.log(usedImages);
+
 }
 
 function updateHTMLTotal() {
@@ -80,26 +76,25 @@ function imageClick() {
   for (var i = 0; i < usedImages.length; i++) {
     if (this.getAttribute('src') === usedImages[i].path) {
       usedImages[i].clicks += 1;
-      //console.log('Number of clicks: ', usedImages[i].clicks);
-      //console.log('total: ', totalCounter);
+
       totalCounter += 1;
       newImage(); //New images are generated
     }
   }
   endSurvey();
   updateHTMLTotal();
-  //console.log(totalCounter);
+
 }
 
-// function postResults () {
-//   //Iterates through clicked values of objects and appends them to HTML ul element
-//   var listArray = [];
-//   var masterList = document.getElementById('results');
-//   for (var i = 0; i < imageObjects.length; i++) {
-//     listArray.push(`<li>Number of clicks for ${imageObjects[i].name}: ${imageObjects[i].clicks}</li>`);
-//   }
-//   masterList.innerHTML = listArray.join('');
-// }
+function postResults () {
+  //Iterates through clicked values of objects and appends them to HTML ul element
+  var listArray = [];
+  var masterList = document.getElementById('results');
+  for (var i = 0; i < imageObjects.length; i++) {
+    listArray.push(`<li>Number of clicks for ${imageObjects[i].name}: ${imageObjects[i].clicks}</li>`);
+  }
+  masterList.innerHTML = listArray.join('');
+}
 
 function endSurvey() {
   //Checks to see if totCounter is greater than 25
@@ -108,10 +103,10 @@ function endSurvey() {
   if (totalCounter >= 25) {
     var allPics = document.getElementsByClassName('randPic');
     for (var i = 0; i < allPics.length; i++) {
-      //console.log(allPics[i]);
+
       allPics[i].removeEventListener('click', imageClick);
     }
-    //postResults();
+    postResults();
   }
   genChart();
   packageSession();
@@ -121,7 +116,7 @@ function addHandler() {
   //Adds event handler to image elements
   var allPics = document.getElementsByClassName('randPic');
   for (var i = 0; i < allPics.length; i++) {
-    //console.log(allPics[i]);
+
     allPics[i].addEventListener('click', imageClick);
   }
 }
@@ -136,6 +131,7 @@ if (localStorage.oldObjects) {
   endSurvey();
   updateHTMLTotal();
   var chartColor = colorArray();
+  postResults();
   genChart();
 }
 
@@ -168,7 +164,7 @@ function colorArray() {
   return colorArray;
 }
 
-var chartColor = colorArray()
+chartColor = colorArray();
 
 function genChart() {
   var ctx = document.getElementById('canvas');
