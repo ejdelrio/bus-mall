@@ -169,7 +169,8 @@ chartColor = colorArray();
 function genChart() {
   var ctx = document.getElementById('canvas');
   ctx.style.visibility = 'visible';
-  var myChart = new Chart(ctx, {
+  //Chart is functioning properly. I can't remove this linter error :(
+  new Chart(ctx, {
     type: 'polarArea',
     data: {
       labels: imageArray,
